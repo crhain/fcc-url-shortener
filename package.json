@@ -1,0 +1,28 @@
+{
+  "name": "fcc-url-shortener",
+  "version": "1.0.0",
+  "description": "A simple microservice for returning a shortened url to access websites",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "start": "node index.js"
+  },
+  "engines": {
+    "node": "7.8.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/crhain/fcc-url-shortener.git"
+  },
+  "author": "Carl Hain",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/crhain/fcc-url-shortener/issues"
+  },
+  "homepage": "https://github.com/crhain/fcc-url-shortener#readme",
+  "dependencies": {
+    "express": "^4.15.2"
+  }
+}
