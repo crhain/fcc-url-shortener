@@ -22,7 +22,7 @@ Pro Tip: Checkout this wiki article for tips on integrating MongoDB on Heroku.
 Running Project
 -------------------------------
 
-1. Create a mongodb database and 'url' collection with data records format `{"short_url": "5555", "long_url": "https://www.google.com"}`
+1. Create a mongodb database and 'url' collection with data records format `{_id: "5555", long_url: "https://www.google.com"}`
 1. Add a secret/info.txt file with connect path to mongodb on first line.
 or
 2. Set DB_URL environmental variable to connect path
