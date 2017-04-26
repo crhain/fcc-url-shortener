@@ -17,3 +17,18 @@ Build a full stack JavaScript app that is functionally similar to this: https://
 * User Story: When I visit that shortened URL, it will redirect me to my original link.
 
 Pro Tip: Checkout this wiki article for tips on integrating MongoDB on Heroku.
+
+
+Running Project
+-------------------------------
+
+1. Create a mongodb database and 'url' collection with data records format `{"short_url": "5555", "long_url": "https://www.google.com"}`
+1. Add a secret/info.txt file with connect path to mongodb on first line.
+or
+2. Set DB_URL environmental variable to connect path
+
+
+
+
+
+

@@ -4,20 +4,14 @@ const fs = require('fs');
 const port = process.env.PORT || 5000;
 const app = express();
 const newPathRegEx = /^(\/new\/http(s?):\/\/)/;
-var dbUser = process.env.DB_USER;
-var dbPw = process.env.DB_PW;
+let databaseUrl = process.env.DB_URL;
 
-//if there is no local variable for dbUser, set from file
-if(!dbUser){
-  let fileStream = fs.readFileSync(__dirname + "/secret/info.txt", 'utf8').split('\n');
-  dbUser = fileStream[0];
-  dbPw = fileStream[1];
+//if no environmental variable for DB_URL then set to info in /secret/info.txt
+if(!databaseUrl){
+    databaseUrl = fs.readFileSync(__dirname + "/secret/info.txt", 'utf8').split('\n')[0];
 }
 
-const databaseUrl = "mongodb://" + dbUser 
-                    + ":" + dbPw + "@ds161048.mlab.com:61048/ffc-url-shortener";
-
-console.log(databaseUrl);
+//console.log(databaseUrl);
 
 app.use(express.static('public'));
 
