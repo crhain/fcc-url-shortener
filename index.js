@@ -34,13 +34,32 @@ app.get(newPathRegEx, (request, response) => {
 //set up path to redirect to short url
 app.get('/:url', (request, response) => {
     const url = request.params.url;
-    //check url to see if it is a number.  If not, then return error
-
-    //check database to see if url exists
-        //If it does exist, then redirect browser to url stored in database
-    
-    //if url does not exist, then return error message
-    response.end(url + " Does not exist!");
+    let shortUrl;
+    let dbDocument;
+    //check url to see if it is a number.  If not, then return error.  Need to add check using regexp here
+    //  should be a 4 digit number    
+    if(url){        
+        //check database to see if url exists
+        getUrlFromDatabase(url, (db, error, documents)=>{
+            if(error) return console.error(error);
+            let success = documents.length > 0;
+            if(success){
+                let document = documents[0];            
+                console.log(document);
+                //If it does exist, then redirect browser to url stored in database
+                response.redirect(document.long_url);                                            
+            }
+            else{
+                //if it doesn't exist indicate it wasn't located (maybe send error code?)
+                response.end(url + " not found :(");
+            }            
+            db.close();
+        });
+    }
+    else{
+        //if url does not exist, then return error message
+        response.end(url + " Does not exist!");
+    }                
 });
 
 //stub function for loading url to mongo database
@@ -55,10 +74,8 @@ function addUrlToDatabase(url, callback){
 
 function getUrlFromDatabase(url, callback){
     connectToDb(dbUrl, (collection, db)=>{
-        //collection
-        db.close();
-    });
-    
+        collection.find({_id: +url}).toArray(callback.bind(null, db));        
+    });    
 }
 
 function connectToDb(dbUrl, callback){
