@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/crhain/fcc-url-shortener#readme",
   "dependencies": {
-    "express": "^4.15.2"
+    "express": "^4.15.2",
+    "mongodb": "^2.2.26"
   }
 }
