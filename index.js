@@ -35,10 +35,10 @@ app.get(newPathRegEx, (request, response) => {
 app.get('/:url', (request, response) => {
     const url = request.params.url;
     let shortUrl;
-    let dbDocument;
-    //check url to see if it is a number.  If not, then return error.  Need to add check using regexp here
+    let dbDocument;    
     //  should be a 4 digit number    
-    if(url){        
+    let urlMatches = url && url.length ===4 && url.search(/^[0-9]{4}/) === 0;
+    if(urlMatches){        
         //check database to see if url exists
         getUrlFromDatabase(url, (db, error, documents)=>{
             if(error) return console.error(error);

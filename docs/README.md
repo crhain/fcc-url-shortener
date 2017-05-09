@@ -23,9 +23,18 @@ Running Project
 -------------------------------
 
 1. Create a mongodb database and 'url' collection with data records format `{_id: "5555", long_url: "https://www.google.com"}`
-1. Add a secret/info.txt file with connect path to mongodb on first line.
+2. Add a secret/info.txt file with connect path to mongodb on first line.
 or
-2. Set DB_URL environmental variable to connect path
+3. Set DB_URL environmental variable to connect path
+
+
+To Do
+--------------------------------
+
+1. create better hashing function
+2. create way to handle hash collisions in database
+  - could do a find before insert and compare long_url fields to determine collisions.  do not insert if it exists, but redirect instead?
+3. add proper regular expressions to check both short_url and long_url inputs.
 
 
 
