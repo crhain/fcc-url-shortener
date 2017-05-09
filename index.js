@@ -3,7 +3,8 @@ const mongo = require('mongodb').MongoClient;
 const fs = require('fs');
 const port = process.env.PORT || 5000;
 const app = express();
-const newPathRegEx = /^(\/new\/http(s?):\/\/)/;
+//const newPathRegEx = /^(\/new\/http(s?):\/\/)/;
+const newPathRegEx = /^(\/new\/http(s?):\/\/).+(\.[a-zA-Z]{3})$/;
 const collectionName = "urls";
 let dbUrl = process.env.DB_URL;
 
