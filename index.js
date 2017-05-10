@@ -7,17 +7,12 @@ const app = express();
 const newPathRegEx = /^(\/new\/http(s?):\/\/).+(\.[a-zA-Z]{3})$/;
 const collectionName = "urls";
 let dbUrl = process.env.DB_URL;
-
 //set up static file for base url
 app.use(express.static('public'));
-
 //if no environmental variable for DB_URL then set to info in /secret/info.txt
 if(!dbUrl){
     dbUrl = fs.readFileSync(__dirname + "/secret/info.txt", 'utf8').split('\n')[0];
 }
-
-//console.log(databaseUrl);
-
 //set up path for adding new urls at /new/url
 app.get(newPathRegEx, (request, response) => {
     //get path and then slice of first five characters (i.e. /new/)
@@ -27,11 +22,10 @@ app.get(newPathRegEx, (request, response) => {
     addUrlToDatabase(url, function (id, doc){
         //contsruct succesJSON
         successJSON.original_url = url;
-        successJSON.short_url = id; //need to get full url of request minus path + returned id from database        
+        successJSON.short_url = id; 
         response.end(JSON.stringify(successJSON));
     });                    
 });
-
 //set up path to redirect to short url
 app.get('/:url', (request, response) => {
     const url = request.params.url;
@@ -99,7 +93,6 @@ function getHashedUrlId(url){
 
     return hash % 9999;
 }
-
 
 app.listen(port, ()=>{
     console.log('Running server on port:' + port);        

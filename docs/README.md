@@ -1,6 +1,12 @@
 README
 ==============================
 
+Deployed at:
+-------------------------
+
+https://crh-url-short.herokuapp.com/
+
+
 Objective
 --------------------------
 
@@ -34,7 +40,7 @@ To Do
 1. create better hashing function
 2. create way to handle hash collisions in database
   - could do a find before insert and compare long_url fields to determine collisions.  do not insert if it exists, but redirect instead?
-3. add proper regular expressions to check both short_url and long_url inputs.
+
 
 
 
