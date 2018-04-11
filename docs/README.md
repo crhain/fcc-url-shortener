@@ -1,13 +1,10 @@
-README
+FREECODECAMP URL SHORTENER
 ==============================
 
-Deployed at:
--------------------------
-
-https://crh-url-short.herokuapp.com/
+This application was developed for freeCodeCamp. A demo version can be found at [crh-url-short.herokuapp.com/](https://crh-url-short.herokuapp.com/)
 
 
-Objective
+OBJECTIVE
 --------------------------
 
 Build a full stack JavaScript app that is functionally similar to this: https://little-url.herokuapp.com/ and deploy it to Heroku.
